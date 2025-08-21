@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventPro - Agencja Eventowa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #064e3b 0%, #000000 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #34d399;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #34d399;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-gray-900 shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+<div class="flex items-center">
+    <img src="unone-logo.png" alt="UNONE Logo" class="h-10 w-auto" />
+</div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-gray-300 hover:text-emerald-400 px-3 py-2 text-sm font-medium">Strona główna</a>
+                        <a href="#services" class="nav-link text-gray-300 hover:text-emerald-400 px-3 py-2 text-sm font-medium">Usługi</a>
+                        <a href="#portfolio" class="nav-link text-gray-300 hover:text-emerald-400 px-3 py-2 text-sm font-medium">Portfolio</a>
+                        <a href="#about" class="nav-link text-gray-300 hover:text-emerald-400 px-3 py-2 text-sm font-medium">O nas</a>
+                        <a href="#contact" class="nav-link text-gray-300 hover:text-emerald-400 px-3 py-2 text-sm font-medium">Kontakt</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-emerald-400 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-emerald-400">Strona główna</a>
+                <a href="#services" class="block px-3 py-2 text-gray-300 hover:text-emerald-400">Usługi</a>
+                <a href="#portfolio" class="block px-3 py-2 text-gray-300 hover:text-emerald-400">Portfolio</a>
+                <a href="#about" class="block px-3 py-2 text-gray-300 hover:text-emerald-400">O nas</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-300 hover:text-emerald-400">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in">
+                    Tworzymy Niezapomniane Wydarzenia
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto fade-in">
+                    Profesjonalna organizacja eventów korporacyjnych, wesel, konferencji i imprez okolicznościowych
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 sm:space-x-4 sm:gap-0 justify-center fade-in">
+                    <button onclick="scrollToSection('contact')" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-emerald-800 transition duration-300 w-full sm:w-auto">
+                        Skontaktuj się z nami
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 fade-in">Nasze Usługi</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto fade-in">
+                    Oferujemy kompleksową obsługę eventów od pomysłu po realizację
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-gray-50 p-8 rounded-xl text-center fade-in">
+                    <div class="text-4xl mb-4">🎪</div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Eventy Korporacyjne</h3>
+                    <p class="text-gray-600">Konferencje, szkolenia, imprezy firmowe i eventy integracyjne</p>
+                </div>
+                
+                <div class="card-hover bg-gray-50 p-8 rounded-xl text-center fade-in">
+                    <div class="text-4xl mb-4">💒</div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Wesela i Uroczystości</h3>
+                    <p class="text-gray-600">Organizacja wesel, chrzcin, komunii i innych uroczystości rodzinnych</p>
+                </div>
+                
+                <div class="card-hover bg-gray-50 p-8 rounded-xl text-center fade-in">
+                    <div class="text-4xl mb-4">🎭</div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Eventy Kulturalne</h3>
+                    <p class="text-gray-600">Koncerty, spektakle, wystawy i inne wydarzenia kulturalne</p>
+                </div>
+                
+                <div class="card-hover bg-gray-50 p-8 rounded-xl text-center fade-in">
+                    <div class="text-4xl mb-4">🏆</div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Eventy Sportowe</h3>
+                    <p class="text-gray-600">Turnieje, zawody sportowe i eventy rekreacyjne</p>
+                </div>
+                
+                <div class="card-hover bg-gray-50 p-8 rounded-xl text-center fade-in">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Dekoracje i Scenografia</h3>
+                    <p class="text-gray-600">Projektowanie i wykonanie dekoracji oraz scenografii eventów</p>
+                </div>
+                
+                <div class="card-hover bg-gray-50 p-8 rounded-xl text-center fade-in">
+                    <div class="text-4xl mb-4">🎵</div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Obsługa Techniczna</h3>
+                    <p class="text-gray-600">Nagłośnienie, oświetlenie i pełna obsługa techniczna</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 fade-in">Nasze Realizacje</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto fade-in">
+                    Poznaj niektóre z naszych najlepszych projektów
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-white rounded-xl overflow-hidden shadow-lg fade-in">
+                    <div class="h-48 bg-gradient-to-br from-emerald-600 to-gray-900 flex items-center justify-center">
+                        <div class="text-white text-6xl">🎉</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Konferencja Tech Summit 2023</h3>
+                        <p class="text-gray-600">500 uczestników, 3 dni, kompleksowa obsługa</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-xl overflow-hidden shadow-lg fade-in">
+                    <div class="h-48 bg-gradient-to-br from-gray-800 to-emerald-700 flex items-center justify-center">
+                        <div class="text-white text-6xl">💒</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Wesele Anny i Marka</h3>
+                        <p class="text-gray-600">Romantyczna uroczystość dla 120 gości</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-xl overflow-hidden shadow-lg fade-in">
+                    <div class="h-48 bg-gradient-to-br from-emerald-800 to-black flex items-center justify-center">
+                        <div class="text-white text-6xl">🏢</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Gala Firmowa ABC Corp</h3>
+                        <p class="text-gray-600">Elegancka gala z pokazem mody i koncertem</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">O Naszej Agencji</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        EventPro to doświadczona agencja eventowa z ponad 10-letnim stażem na rynku. 
+                        Specjalizujemy się w organizacji wydarzeń na najwyższym poziomie.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Nasz zespół składa się z kreatywnych profesjonalistów, którzy dbają o każdy detal, 
+                        aby Twoje wydarzenie było niezapomniane.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-emerald-600 mb-2">500+</div>
+                            <div class="text-gray-600">Zrealizowanych eventów</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-emerald-600 mb-2">10+</div>
+                            <div class="text-gray-600">Lat doświadczenia</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-emerald-600 mb-2">98%</div>
+                            <div class="text-gray-600">Zadowolonych klientów</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-emerald-600 mb-2">24/7</div>
+                            <div class="text-gray-600">Wsparcie</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="bg-gradient-to-br from-emerald-700 to-gray-900 rounded-2xl p-8 text-white text-center">
+                        <div class="text-8xl mb-4">🎯</div>
+                        <h3 class="text-2xl font-bold mb-4">Nasza Misja</h3>
+                        <p class="text-lg">
+                            Tworzymy wyjątkowe doświadczenia, które pozostają w pamięci na długo. 
+                            Każdy event to dla nas nowe wyzwanie i możliwość pokazania naszej kreatywności.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 fade-in">Skontaktuj się z nami</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto fade-in">
+                    Gotowi na rozmowę o Twoim wymarzonym evencie?
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Wyślij nam wiadomość</h3>
+                        <form id="contact-form" action="https://formsubmit.io/send/ka.piorkowski@gmail.com" method="POST" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Imię i nazwisko</label>
+                                <input type="text" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="Jan Kowalski" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input type="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="jan@example.com" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Telefon</label>
+                                <input type="tel" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="+48 123 456 789">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Rodzaj eventu</label>
+                                <select name="event_type" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+                                    <option>Wybierz rodzaj eventu</option>
+                                    <option>Event korporacyjny</option>
+                                    <option>Wesele</option>
+                                    <option>Uroczystość rodzinna</option>
+                                    <option>Event kulturalny</option>
+                                    <option>Inne</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Wiadomość</label>
+                                <textarea name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="Opisz swoje wymagania..." required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-emerald-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-emerald-700 transition duration-300">
+                                Wyślij wiadomość
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="space-y-8">
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="text-2xl mr-4">📍</div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Adres</h4>
+                                    <p class="text-gray-600">ul. Eventowa 123<br>00-001 Warszawa</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="text-2xl mr-4">📞</div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Telefon</h4>
+                                    <p class="text-gray-600">+48 123 456 789</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="text-2xl mr-4">✉️</div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Email</h4>
+                                    <p class="text-gray-600">kontakt@eventpro.pl</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="text-2xl mr-4">🕒</div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Godziny pracy</h4>
+                                    <p class="text-gray-600">Pon-Pt: 9:00-18:00<br>Sob: 10:00-14:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">🎉 EventPro</div>
+                    <p class="text-gray-400">Tworzymy niezapomniane wydarzenia od 2013 roku.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Usługi</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Eventy korporacyjne</li>
+                        <li>Wesela</li>
+                        <li>Eventy kulturalne</li>
+                        <li>Obsługa techniczna</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Firma</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>O nas</li>
+                        <li>Portfolio</li>
+                        <li>Kariera</li>
+                        <li>Blog</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Kontakt</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>+48 123 456 789</li>
+                        <li>kontakt@eventpro.pl</li>
+                        <li>ul. Eventowa 123, Warszawa</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 EventPro. Wszystkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            const navHeight = 64; // Height of fixed navigation
+            const elementPosition = element.offsetTop - navHeight;
+            
+            window.scrollTo({
+                top: elementPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add click handlers to navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('href').substring(1);
+                scrollToSection(sectionId);
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Usunięto obsługę JS formularza, by umożliwić wysyłkę przez formsubmit.io
+
+        // Initialize fade-in animations for elements already in view
+        setTimeout(() => {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('visible');
+                }
+            });
+        }, 100);
+    </script>
